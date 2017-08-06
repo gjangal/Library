@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LibraryData.Models
 {
-    class LibraryCard
+    public class LibraryCard
     {
     }
 }
