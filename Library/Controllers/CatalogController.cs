@@ -31,5 +31,27 @@ namespace Library.Controllers
 
             return View(new AssetIndexModel() { Assets = listingModel});
         }
+
+        public IActionResult Detail(int id)
+        {
+            var asset = _assets.GetById(id);
+
+            var assetDetail = new AssetDetailModel()
+            {
+                AssetId = id,
+                ImageUrl = asset.ImageUrl,
+                AuthorOrDirector = _assets.GetAuthorOrDirector(id),
+                Title = asset.Title,
+                Year = asset.Year,
+                Status = asset.Status.Name,
+                Cost = asset.Cost,
+                CurrentLocation = _assets.GetCurrentLocation(id).Name,
+                DeweyCallNumber = _assets.GetDeweyIndex(id),
+                ISBN = _assets.GetIsbn(id)
+
+            };
+
+            return View(assetDetail);
+        }
     }
 }
