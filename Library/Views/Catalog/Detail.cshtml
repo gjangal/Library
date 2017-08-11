@@ -21,8 +21,8 @@
 
             @if(Model.Status == "Lost")
             {
-
-
+                <p>This item has been lost. It cannot be checked out.</p>
+                <p><a class="btn btn-lg btn-danger" role="button" asp-controller="Catalog" asp-action="MarkFound" asp-route-id="@Model.AssetId">Mark Item Found In</a></p>
             }
 
             @if(Model.Status == "Checked Out")
@@ -37,6 +37,22 @@
                 <p><a class="btn btn-lg btn-info" role="button" asp-controller="Catalog" asp-action="Checkout" asp-route-id="@Model.AssetId">Check out</a></p>
             }
 
+        </div>
+        <div class="col-md-4 detailInfo">
+            <table>
+                <tr>
+                    <td class="itemLabel">ISBN: </td>
+                    <td class="itemValue">@Model.ISBN</td>
+                </tr>
+                <tr>
+                    <td class="itemLabel">Call Number: </td>
+                    <td class="itemValue">@Model.DeweyCallNumber</td>
+                </tr>
+                <tr>
+                    <td class="itemLabel">Replacement Cost: </td>
+                    <td class="itemValue">@Model.Cost</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
